@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarjeta de Optimismo</title>
+  <style>
+    body {
+      margin: 0;
+      background: #d0eaff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card-container {
+      perspective: 1000px;
+    }
+
+    .card {
+      width: 400px;
+      height: 500px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .card.open {
+      transform: rotateY(180deg);
+    }
+
+    .card .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 30px;
+      box-sizing: border-box;
+      color: #003366;
+      background-color: #d0eaff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      overflow-y: auto;
+    }
+
+    .card .front {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .card .back {
+      transform: rotateY(180deg);
+      overflow-y: auto;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .closing-text {
+      display: none;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #003366;
+      background-color: #e0f3ff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .show-closed .closing-text {
+      display: block;
+    }
+
+    .show-closed .card-container {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <div class="card-container">
+    <div class="card" id="card">
+      <!-- Portada -->
+      <div class="face front">
+        <div>
+          <p>PENSAR COMO ADULTO,<br>
+             VIVIR COMO JOVEN,<br>
+             ACONSEJAR COMO ANCIANO,<br>
+             Y NO DEJAR DE SOÑAR COMO NIÑO<br>
+             <strong>¡ESA ES LA CLAVE!</strong></p>
+          <button class="button" onclick="openCard()">Abrir Tarjeta</button>
+        </div>
+      </div>
+
+      <!-- Interior -->
+      <div class="face back">
+        <h2>TARJETAS DE OPTIMISMO</h2>
+        <h4>DECLARACIONES POSITIVAS</h4>
+        <ul>
+          <li>Prometo mantener una actitud positiva cuando me enfrente a la negatividad</li>
+          <li>Cuando me rodee el pesimismo elegiré el optimismo</li>
+          <li>Cuando sienta miedo elegiré la Fe</li>
+          <li>Cuando quiera odiar elegiré el amor</li>
+          <li>Cuando quiera mostrar amargura elegiré mejorar</li>
+          <li>Cuando se me plantee un reto elegiré la oportunidad de aprender y crecer</li>
+          <li>Cuando me enfrente a la adversidad encontraré la fuerza</li>
+          <li>Cuando enfrente un fracaso seré resiliente</li>
+          <li>Cuando fracase me caeré mirando hacia adelante hacia el éxito futuro</li>
+          <li>Con visión esperanza y fe nunca me daré por vencido y continuaré siempre hacia mi destino</li>
+          <li>Creo que los mejores días de vida están por llegar no que ya los haya dejado atrás</li>
+          <li>Creo que estoy aquí por un motivo y que mi propósito es mayor que mis retos</li>
+          <li>Creo que ser positivo no solo me hace mejor a mí, también mejora a todos los que me rodean</li>
+          <li>Hoy y todos los días mantendré una actitud positiva y me esforzaré por tener un impacto en el mundo</li>
+          <li>No hay ningún desafío que pueda interponerse en tu camino si tienes el valor de seguir avanzando</li>
+        </ul>
+        <button class="button" onclick="closeCard()">Cerrar Tarjeta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contraportada (después de cerrar) -->
+  <div class="closing-text" id="closingText">
+    <h3>CREENCIAS</h3>
+    <ul>
+      <li>Tener las creencias adecuadas equivale a tener las herramientas adecuadas para tener éxito</li>
+      <li>Confío en el Plan de DIOS para mi vida</li>
+      <li>Acepto todas las grandes cosas positivas de hoy</li>
+      <li>Acepto todo el amor, alegría, abundancia y éxito que puedan llegar a mi vida</li>
+      <li>Acepto todas las personas que quieran trabajar conmigo y beneficiarse de mis dones</li>
+      <li>Cada día soy más fuerte, más sano y mejor</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function openCard() {
+    document.getElementById("card").classList.add("open");
+  }
+
+  function closeCard() {
+    document.querySelector(".content").classList.add("show-closed");
+  }
+</script>
+
+</body>
+</html>
